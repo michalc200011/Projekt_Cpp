@@ -1,0 +1,2 @@
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\x64\Release\gra.exe
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\x64\Release\gra.exe
