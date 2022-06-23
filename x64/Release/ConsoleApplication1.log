@@ -1,25 +1,25 @@
 ﻿D:\Visual Studio C++\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: Katalog pośredni (x64\Release\) zawiera pliki udostępnione z innego projektu (ConsoleApplication1.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
   game.cpp
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(14,84): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(20,90): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(39,42): warning C4305: "argument": obcięcie z "double" do "float"
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(42,30): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(54,31): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(63,39): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(65,61): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(74,29): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(182,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(182,50): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(190,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(190,50): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(205,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(207,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(209,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(211,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(213,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
-D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(215,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(18,84): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(24,90): warning C4244: "inicjowanie": konwersja z "double" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(43,42): warning C4305: "argument": obcięcie z "double" do "float"
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(46,30): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(58,31): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(67,39): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(69,61): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(78,29): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(236,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(236,50): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(244,70): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(244,50): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(261,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(263,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(265,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(267,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(269,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test — kopia\ConsoleApplication1\game.cpp(271,36): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
   Trwa generowanie kodu
-  1 of 280 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 465 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
