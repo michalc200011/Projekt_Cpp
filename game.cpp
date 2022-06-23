@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <math.h>
 #include <vector>
@@ -7,8 +8,11 @@
 #include <fstream>
 #include <stdlib.h> 
 #include <time.h>
+#include <fstream>
 #include "map_objects.h"
-//kolizje
+#include "Text.h"
+#include <fstream>
+//kolizje//
 bool collisionP(sf::Sprite& a, sf::Sprite& b,float a_width,float a_height,float b_width,float b_height,float a_scale,float b_scale)
 {
 	float aw = a_width * a_scale, ah = a_height * a_scale, bw = b_width * b_scale, bh = b_height * b_scale*0.2;
@@ -27,7 +31,7 @@ int main()
 	const int w = 400, h = 670;
 	//Dane do animacji
 	const int gravd = 4,gravu=4, jumpheight = 50;
-	bool Jump = false, noJump = true, Left = false,firstgen=true,start=false,lose=false;
+	bool Jump = false, noJump = true, Left = false,firstgen=true,start=false,lose=false,entered=true,first=true,scoresave=false;
 	float jump_lvl, xVel = 1; 
 	//okno gry
 	sf::RenderWindow window(sf::VideoMode(w, h), "Ptaszor");
@@ -83,28 +87,75 @@ int main()
 	font.loadFromFile("Font/Raleway-SemiBold.ttf");
 	sf::Text text;
 	text.setFont(font);
-	text.setCharacterSize(32);
+	text.setCharacterSize(30);
 	text.setFillColor(sf::Color(0,0,0));
+	sf::Text textsc;
+	textsc.setFont(font);
+	textsc.setCharacterSize(26);
+	textsc.setFillColor(sf::Color(0, 0, 0));
+	//D¿wiêki
+	sf::Music coinsound;
+	coinsound.openFromFile("Sounds/coin.wav");
+	sf::Music jumpsound;
+	jumpsound.openFromFile("Sounds/jump.wav");
+	sf::Music death;
+	death.openFromFile("Sounds/death.wav");
+	sf::Music theme;
+	theme.openFromFile("Sounds/theme.wav");
+	theme.setLoop(true);
 	/////////////////////////////////////////GRA///////////////////////////
 	int score = 0;
 	//60FPS
 	window.setFramerateLimit(60);
+	window.setKeyRepeatEnabled(false);
 	//zegar do animacji
 	sf::Clock clock;
+	//textbox
+	Textbox textbox1(28, sf::Color(0, 0, 0), true);
+	textbox1.setFont(font);
+	//scoreboard
+	std::fstream plik;
 	//gra
+	theme.play();
 	while (window.isOpen()) 
 	{
+		window.setFramerateLimit(60);
+		
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed ||
 				sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))window.close();
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))start = true;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space ) && !scoresave)start = true;
 		}
 		window.draw(mapbackground);
-		if (!start) {window.draw(menu);}
+		if (!start && !scoresave) {
+			window.draw(menu); 
+			
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))start = true;
+			plik.open("Score/score.txt", std::ios::in);
+			std::string line;
+			std::string srcscore="Last 10 scores:\n\n";
+			std::vector<std::string> lines;
+			int k = 0;
+			while (std::getline(plik,line))
+			{
+				lines.push_back(line);
+				k++;
+			}
+			for (int i = k-1; i >= 0 && i > k - 11; i--)
+			{
+				srcscore += lines[i] + "\n";
+			}
+			textsc.setPosition(w / 2 - textsc.getGlobalBounds().width / 2, 100);
+			textsc.setString(srcscore);
+			window.draw(textsc);
+			plik.close();
+		}
 		if (start)
-		{
+		{	
+			first = false;
+			
 			if (lose && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) 
 			{
 				lose = false;
@@ -114,6 +165,7 @@ int main()
 			}
 			if (!lose)
 			{
+				
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 				{
 					jump_lvl = bird.getPosition().y - jumpheight;
@@ -130,6 +182,8 @@ int main()
 
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 					{
+						jumpsound.stop();
+						jumpsound.play();
 						if (!Left)
 						{
 							bird_rect.left = lefts[1];
@@ -193,25 +247,27 @@ int main()
 				sf::IntRect result;
 				if (candy.size() != 0 && bird.getGlobalBounds().intersects((*candy[0]).sprite.getGlobalBounds()))
 				{
+					coinsound.stop();
 					candy.erase(candy.begin(), candy.begin() + candy.size());
 					score++;
+					coinsound.play();
 				}//////////////////////////////////////////////////////////////////
-				text.setString("You lose.\nYour score:" + std::to_string(score)+"\nPress space to continue");
+				text.setString("Your score:" + std::to_string(score)+"\nType your name \nand press enter to save");
 				text.setPosition(w/2 - (text.getGlobalBounds().width / 2), 0);
 				//generacja kolców
 				switch (score)
 				{
-				case 15:
+				case 5:
 					spikes_places = (nspikes - 4) * 0.35;
-				case 35:
+				case 15:
 					spikes_places = (nspikes - 4) * 0.40;
-				case 55:
+				case 20:
 					spikes_places = (nspikes - 4) * 0.45;
-				case 85:
+				case 35:
 					spikes_places = (nspikes - 4) * 0.50;
-				case 115:
+				case 45:
 					spikes_places = (nspikes - 4) * 0.55;
-				case 155:
+				case 55:
 					spikes_places = (nspikes - 4) * 0.60;
 				default:
 					break;
@@ -256,7 +312,6 @@ int main()
 							if (!simmilar) { place_numbers.push_back(number); }
 							simmilar = false;
 						}
-						std::cout << place_numbers[0] << " " << number << " " << place_numbers.size() << " " << nspikes << std::endl;
 					}
 					firstgen = false;
 				}
@@ -297,18 +352,20 @@ int main()
 							if (!simmilar) { place_numbers.push_back(number); }
 							simmilar = false;
 						}
-						std::cout << place_numbers[0] << " " << number << " " << place_numbers.size() << " " << nspikes << std::endl;
+
 					}
 				}
 				//Przesuniecie x
 				bird.setPosition(bird.getPosition().x + xVel, bird.getPosition().y);
 				for (int i = 0; i < place_numbers.size(); i++)
 				{
-					if (!Left && collisionP(bird, (*Rspikes[place_numbers[i]]).sprite, birdw, birdh, spikew, spikeh, birdscale, spikescale)) {lose = true;}
-					if (Left && collisionL(bird, (*Lspikes[place_numbers[i]]).sprite, birdw, birdh, spikew, spikeh, birdscale, spikescale)) {lose=true;}
+					if (!Left && collisionP(bird, (*Rspikes[place_numbers[i]]).sprite, birdw, birdh, spikew, spikeh, birdscale, spikescale)) {lose = true; death.stop(); death.play();
+					}
+					if (Left && collisionL(bird, (*Lspikes[place_numbers[i]]).sprite, birdw, birdh, spikew, spikeh, birdscale, spikescale)) {lose=true; death.stop(); death.play();
+					}
 				}
-				if (bird.getPosition().y < 0)lose = true;
-				if (bird.getPosition().y + birdw * birdscale > h)lose = true;
+				if (bird.getPosition().y < 0) { lose = true; death.stop();death.play();}
+				if (bird.getPosition().y + birdw * birdscale > h) { lose = true; death.stop();death.play();}
 
 				window.draw(bird);
 				for (int i = 0; i < place_numbers.size(); i++)
@@ -318,17 +375,39 @@ int main()
 				}
 				if (candy.size() != 0)
 				{
-					std::cout << candy.size() << std::endl;
+
 					window.draw((*candy[0]).sprite);
 				}
 
 
 			}
-			else
-			{
-			window.draw(text);
-			}
+			{	
 			
+			}
+
+			
+		}
+		if (lose) {
+			scoresave = true;
+			start = false;
+			window.setFramerateLimit(10);
+			window.draw(text);
+			textbox1.setLimit(true, 10);
+			if (event.type == sf::Event::TextEntered) {
+				textbox1.typedOn(event);
+			}
+			textbox1.setPosition({ w / 4, 120 });
+			textbox1.drawTo(window);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+				plik.open("Score/score.txt", std::ios::out | std::ios::app);
+				plik << textbox1.getText() << ":" << score << "\n";
+				plik.close();
+				scoresave = false;
+				lose = false;
+				bird.setPosition(w / 3, h / 3);
+				firstgen = true;
+			}
+
 		}
 		
 		window.display();

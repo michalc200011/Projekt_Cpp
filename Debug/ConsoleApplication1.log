@@ -1,2 +1,10 @@
-﻿  ConsoleApplication1.cpp
-  ConsoleApplication1.vcxproj -> D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Debug\ConsoleApplication1.exe
+﻿  main.cpp
+  Character.cpp
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Character.cpp(23,42): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Character.cpp(23,25): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+  Window.cpp
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Window.cpp(20,20): error C3861: "main": identyfikatora nie odnaleziono
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Window.cpp(166,26): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Window.cpp(289,105): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+D:\Studia\III Semestr\Projekty c++\test\ConsoleApplication1\Window.cpp(316,50): warning C4305: "argument": obcięcie z "double" do "float"
+  Generowanie kodu...

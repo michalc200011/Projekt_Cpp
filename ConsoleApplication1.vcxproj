@@ -158,9 +158,12 @@
   <ItemGroup>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="map_objects.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Źródło.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="map_objects.h" />
+    <ClInclude Include="Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
