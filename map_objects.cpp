@@ -1,3 +1,4 @@
+
 #include <SFML/Graphics.hpp>
 #include "map_objects.h"
 map_objects::map_objects(float xp, float yp, float heightt, float widthh, std::string txt_path, float scalee)
